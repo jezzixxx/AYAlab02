@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,26 +12,25 @@ namespace lab02
         {
             Console.WriteLine("Введите ключ. При отсутствии ключа нажмите Enter");
             string key = Console.ReadLine();
+            DocumentWorker worker = new DocumentWorker();
             if (key == "")
             {
-                DocumentWorker worker = new DocumentWorker();
-                worker.TryEverything();
+                worker = new DocumentWorker();
             }
             else if (key[0] == 'p' && key[1] == 'r' && key[2] == 'o')
             {
-                ProDocumentWorker worker = new ProDocumentWorker();
-                worker.TryEverything();
+                worker = new ProDocumentWorker();
             }
             else if (key[0] == 'e' && key[1] == 'x' && key[2] == 'p')
             {
-                ExpertDocumentWorker worker = new ExpertDocumentWorker();
-                worker.TryEverything();
+                worker = new ExpertDocumentWorker();
             }
             else
             {
                 Console.WriteLine("Неверный ключ. Попробуйте снова.\n");
                 Main();
             }
+            worker.TryEverything();
         }
     }
     public class ExpertDocumentWorker : ProDocumentWorker
