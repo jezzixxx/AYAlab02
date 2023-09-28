@@ -10,6 +10,7 @@ namespace lab02
     {
         private static void Main()
         {
+            bool first_try = true;
             Console.WriteLine("Введите ключ. При отсутствии ключа нажмите Enter");
             string key = Console.ReadLine();
             DocumentWorker worker = new DocumentWorker();
@@ -28,9 +29,10 @@ namespace lab02
             else
             {
                 Console.WriteLine("Неверный ключ. Попробуйте снова.\n");
+                first_try = false;
                 Main();
             }
-            worker.TryEverything();
+            if (first_try) worker.TryEverything();
         }
     }
     public class ExpertDocumentWorker : ProDocumentWorker
